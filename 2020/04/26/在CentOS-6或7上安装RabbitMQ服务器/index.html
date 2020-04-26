@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>在CentOS 6或7上安装RabbitMQ服务器 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="更新基本系统在安装任何软件包之前，建议使用以下命令更新软件包和存储库。 1yum -y update  安装EPEL存储库 默认的YUM存储库中很多东西不可用，因此需要安装EPEL存储库。 运行以下命令。  1yum -y install epel-release   安装完之后再次更新一下  1yum -y update  安装erlangrabbitmq依赖于erlang环境，必须安装。  安">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在CentOS 6或7上安装RabbitMQ服务器">
+<meta property="og:url" content="http://yoursite.com/2020/04/26/%E5%9C%A8CentOS-6%E6%88%967%E4%B8%8A%E5%AE%89%E8%A3%85RabbitMQ%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="更新基本系统在安装任何软件包之前，建议使用以下命令更新软件包和存储库。 1yum -y update  安装EPEL存储库 默认的YUM存储库中很多东西不可用，因此需要安装EPEL存储库。 运行以下命令。  1yum -y install epel-release   安装完之后再次更新一下  1yum -y update  安装erlangrabbitmq依赖于erlang环境，必须安装。  安">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-26T05:53:01.000Z">
+<meta property="article:modified_time" content="2020-04-26T05:55:56.740Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-在CentOS-6或7上安装RabbitMQ服务器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/26/%E5%9C%A8CentOS-6%E6%88%967%E4%B8%8A%E5%AE%89%E8%A3%85RabbitMQ%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
+  <time datetime="2020-04-26T05:53:01.000Z" itemprop="datePublished">2020-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在CentOS 6或7上安装RabbitMQ服务器
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="更新基本系统"><a href="#更新基本系统" class="headerlink" title="更新基本系统"></a>更新基本系统</h2><p>在安装任何软件包之前，建议使用以下命令更新软件包和存储库。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y update</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装EPEL存储库"><a href="#安装EPEL存储库" class="headerlink" title="安装EPEL存储库"></a>安装EPEL存储库</h2><ul>
+<li>默认的YUM存储库中很多东西不可用，因此需要安装EPEL存储库。 运行以下命令。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install epel-release</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装完之后再次更新一下</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y update</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装erlang"><a href="#安装erlang" class="headerlink" title="安装erlang"></a>安装erlang</h2><p>rabbitmq依赖于erlang环境，必须安装。</p>
+<ul>
+<li>安装</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install erlang socat</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看版本</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">erl -version</span><br></pre></td></tr></table></figure>
+
+<p>centos6和7安装的版本会有差别，注意看一下</p>
+<ul>
+<li>切换到Erlang shell</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">erl</span><br></pre></td></tr></table></figure>
+
+<p>通过按ctrl + C两次退出shell。 Erlang现在安装在系统上，现在可以继续安装RabbitMQ。</p>
+<h2 id="安装rabbitmq"><a href="#安装rabbitmq" class="headerlink" title="安装rabbitmq"></a>安装rabbitmq</h2><ul>
+<li>在rabbitmq官网上找一个合适的版本，主要看上面安装erlang是否能支持此版本</li>
+</ul>
+<p><a href="https://www.rabbitmq.com/releases/rabbitmq-server/" target="_blank" rel="noopener">https://www.rabbitmq.com/releases/rabbitmq-server/</a></p>
+<ul>
+<li>下载</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.rabbitmq.com/releases/rabbitmq-server/v3.6.10/rabbitmq-server-3.6.10-1.el7.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<p>centos6.x版本的erlang默认版本应该是不支持v.3.6.10，需要换一个版本低一点的，比如3.5.x</p>
+<ul>
+<li><p>如果你没有安装wget ，可以运行yum -y install wget安装</p>
+</li>
+<li><p>通过运行导入GPG密钥：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm –import https://www.rabbitmq.com/rabbitmq-release-signing-key.asc</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行RPM安装RPM包：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh rabbitmq-server-3.6.10-1.el7.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<p>RabbitMQ现已安装在系统上。</p>
+<h2 id="开始RabbitMQ"><a href="#开始RabbitMQ" class="headerlink" title="开始RabbitMQ"></a>开始RabbitMQ</h2><ul>
+<li>通过运行以下命令启动RabbitMQ服务器进程。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start rabbitmq-server</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>centos6没有使用systemd，所以没有systemctl命令。可以使用service命令.</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service rabbitmq-server start</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>要在引导时自动启动RabbitMQ，请运行以下命令。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> rabbitmq-server</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>要检查RabbitMQ服务器的状态，请运行：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status rabbitmq-server</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>访问Web控制台</li>
+</ul>
+<p>启动RabbitMQ Web管理控制台，方法是运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq-plugins <span class="built_in">enable</span> rabbitmq_management</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>顺便启动下mqtt</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq-plugins <span class="built_in">enable</span> rabbitmq_mqtt</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过运行以下命令，将RabbitMQ文件的所有权提供给RabbitMQ用户：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R rabbitmq:rabbitmq /var/lib/rabbitmq/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>现在，将需要为RabbitMQ Web管理控制台创建管理用户。 运行以下三条命令。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl add_user admin StrongPassword</span><br><span class="line">rabbitmqctl set_user_tags admin administrator</span><br><span class="line">rabbitmqctl set_permissions -p / admin “.*” “.*” “.*”</span><br></pre></td></tr></table></figure>
+
+<p>将管理员更改为管理员用户的首选用户名。 确保将StrongPassword更改为非常强大的密码。</p>
+<ul>
+<li>要访问RabbitMQ的管理面板，请使用Web浏览器并打开以下URL。<br><a href="http://Your_Server_IP:15672/" target="_blank" rel="noopener">http://Your_Server_IP:15672/</a><br>用户名和密码为上面三条命令创建的</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/26/%E5%9C%A8CentOS-6%E6%88%967%E4%B8%8A%E5%AE%89%E8%A3%85RabbitMQ%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ck9gn439v0000ux32ejguejzf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/26/%E5%9C%A8CentOS-7%E4%B8%8A%E5%AE%89%E8%A3%85PostgreSQL/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          在CentOS 7上安装PostgreSQL
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/26/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E7%A7%81%E4%BB%93Sonatype-Nexus-OSS/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">安装配置私仓Sonatype Nexus OSS</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/26/%E5%9C%A8CentOS-7%E4%B8%8A%E5%AE%89%E8%A3%85PostgreSQL/">在CentOS 7上安装PostgreSQL</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/26/%E5%9C%A8CentOS-6%E6%88%967%E4%B8%8A%E5%AE%89%E8%A3%85RabbitMQ%E6%9C%8D%E5%8A%A1%E5%99%A8/">在CentOS 6或7上安装RabbitMQ服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/26/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E7%A7%81%E4%BB%93Sonatype-Nexus-OSS/">安装配置私仓Sonatype Nexus OSS</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/26/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
